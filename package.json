@@ -2,6 +2,9 @@
   "homepage": "./",
   "devDependencies": {
     "gh-pages": "^4.0.0"
+  },
+  "scripts": {
+    "deploy": "gh-pages -d build"
   }
 
 }
