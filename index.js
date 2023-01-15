@@ -47,16 +47,18 @@ const getPokeData = async function (id) {
   }
 };
 
+const format = function (str) {
+  return str[0].toUpperCase() + str.slice(1);
+};
+
 // poke card template
 const createPokeCard = function (data) {
   const id = data.id < 1000 ? data.id.toString().padStart(3, "0") : data.id;
   const mainType = data.types[0].type.name;
-  // const formatType = mainType[0].toUpperCase() + mainType.slice(1);
+
+  const name = format(data.name);
   const formatType = function (types, number) {
-    return (
-      types[number].type.name[0].toUpperCase() +
-      types[number].type.name.slice(1)
-    );
+    return format(types[number].type.name);
   };
 
   return `
@@ -70,7 +72,7 @@ const createPokeCard = function (data) {
       
       <div class="info">
         <span class="number">#${id}</span>
-        <h3 class="name">${data.name}</h3>
+        <h3 class="name">${name}</h3>
         <small class="type">${formatType(data.types, 0)}</small>
         ${
           data.types[1]
