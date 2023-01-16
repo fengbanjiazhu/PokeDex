@@ -74,7 +74,7 @@ const createPokeCard = function (data) {
         <span class="number">#${id}</span>
         <h3 class="name">${name}</h3>
         <small class="type">${formatType(data.types, 0)}</small>
-        ${data.types[1] ? `<small class="type">${formatType(data.types, 1)}</small>` : ""}
+        ${data.types[1] ? `<small class="type">/ ${formatType(data.types, 1)}</small>` : ""}
       </div>
     </div>
   `;
