@@ -5,11 +5,13 @@
 }
 body {
   background-color: white;
+  /* position: relative; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100%;
+  width: 100%;
   margin: 0;
   background-image: url("./images/other/background.png");
 }
@@ -29,6 +31,60 @@ h1 {
   justify-content: center;
   margin: 0;
   max-width: 1200px;
+  /* position: relative; */
+}
+
+.card-pad {
+  position: fixed;
+  height: 400vh;
+  width: 200vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 99;
+}
+
+.cards {
+  border-radius: 2rem;
+  height: 80%;
+  width: 80%;
+  background-color: #d8756a;
+  position: fixed;
+  left: auto;
+  top: 10%;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  overflow: hidden;
+}
+
+.details {
+  width: 100%;
+  margin: 0.5rem auto;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.basic {
+  flex-grow: 1.5;
+}
+
+.basic img {
+  /* background-color: #d8756a; */
+  width: 12rem;
+}
+.info-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.stats {
+  flex-grow: 1.5;
+}
+.stats table {
+  width: 100%;
+
+  /* height: ; */
 }
 
 .pokemon {
@@ -39,6 +95,12 @@ h1 {
   margin: 10px;
   text-align: center;
   animation: bounceIn 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.pokemon:hover {
+  transform: scale(1.05);
+  transition: all 0.8s ease;
+  /* animation: 1s ease-in; */
 }
 @keyframes bounceIn {
   0% {
