@@ -74,11 +74,7 @@ const createPokeCard = function (data) {
         <span class="number">#${id}</span>
         <h3 class="name">${name}</h3>
         <small class="type">${formatType(data.types, 0)}</small>
-        ${
-          data.types[1]
-            ? `<small class="type">${formatType(data.types, 1)}</small>`
-            : ""
-        }
+        ${data.types[1] ? `<small class="type">${formatType(data.types, 1)}</small>` : ""}
       </div>
     </div>
   `;
@@ -127,11 +123,11 @@ const renderSpinner = async function (handler) {
   spinner.classList.add("none");
 };
 
-const init = function () {
+const init = async function () {
   render(pokemon_count);
+  spinner.classList.add("none");
   loadMoreBtn.addEventListener("click", () => {
     renderSpinner(updateTen);
-    // updateTen();
   });
   window.addEventListener("load", () => {
     console.log("page is fully loaded");

@@ -86,7 +86,7 @@ h1 {
 /* load more button */
 .loadMore {
   letter-spacing: 3px;
-
+  cursor: pointer;
   width: 18rem;
   height: 3rem;
   border-radius: 50px;
