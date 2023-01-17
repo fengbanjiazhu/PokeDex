@@ -14,6 +14,7 @@ body {
   width: 100%;
   margin: 0;
   background-image: url("./images/other/background.png");
+  position: relative;
 }
 .none {
   display: none;
@@ -34,19 +35,24 @@ h1 {
   /* position: relative; */
 }
 
+/* card background */
 .card-pad {
   position: fixed;
-  height: 400vh;
+  /* vertical-align: middle; */
+  bottom: 0;
+  height: 200%;
   width: 200vh;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 99;
+  backdrop-filter: blur(5px);
 }
 
+/* pokemon card */
 .cards {
   border-radius: 2rem;
   height: 80%;
-  width: 80%;
-  background-color: #d8756a;
+  width: 85%;
+  padding: 2%;
   position: fixed;
   left: auto;
   top: 10%;
@@ -55,12 +61,14 @@ h1 {
   flex-direction: column;
   justify-content: space-around;
   overflow: hidden;
+  background-color: rgba(176, 155, 140, 0.9);
 }
 
 .details {
+  border-radius: 1rem;
+  background-image: url("./images/other/card-back.jpg");
   width: 100%;
   margin: 0.5rem auto;
-  background-color: white;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -83,9 +91,49 @@ h1 {
 }
 .stats table {
   width: 100%;
-
-  /* height: ; */
 }
+.stats table th {
+  white-space: nowrap;
+}
+.stats table td {
+  width: 70%;
+  height: 1.2rem;
+}
+.stats table td small {
+  display: inline-block;
+
+  height: 100%;
+  text-align: right;
+  width: 2rem;
+}
+
+.stats table td span {
+  margin-left: 0.5rem;
+  height: 90%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* stat color */
+.stat.hp td span {
+  background-color: #8ac654;
+}
+.stat.atk td span {
+  background-color: #f8cb3c;
+}
+.stat.def td span {
+  background-color: #d98837;
+}
+.stat.spA td span {
+  background-color: #59c3d0;
+}
+.stat.spD td span {
+  background-color: #5890cd;
+}
+.stat.spe td span {
+  background-color: #a456d0;
+}
+/* main page */
 
 .pokemon {
   background-color: lightblue;

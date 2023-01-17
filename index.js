@@ -1,4 +1,6 @@
+import { createMarkUp } from "./detail-card.js";
 const poke_container = document.getElementById("poke-container");
+
 const loadMoreBtn = document.querySelector(".loadMore");
 const spinner = document.querySelector(".spinner");
 const pokemon_count = 10;
@@ -62,7 +64,7 @@ const createPokeCard = function (data) {
   };
 
   return `
-    <div class="pokemon" style="background-color:${colors[mainType]}">
+    <div class="pokemon" data-id=${data.id} style="background-color:${colors[mainType]}">
       <div class="img-container">
         <img
           src="./images/pokemon/${data.id}.png"
@@ -124,14 +126,50 @@ const renderSpinner = async function (handler) {
   spinner.classList.add("none");
 };
 
+// listen details card
+const pokeCard = async function (id) {
+  try {
+    const data = await getPokeData(id);
+    const data2 = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${id}/`);
+    const species = await data2.json();
+    let text = species.flavor_text_entries.find((el) => {
+      return el.language.name === "en";
+    }).flavor_text;
+    text = text.includes("\f") ? text.replace("\f", " ") : text;
+    const html = createMarkUp(data, text);
+    poke_container.insertAdjacentHTML("beforebegin", html);
+
+    const cardBack = document.querySelector("#card-pad");
+    const card = document.querySelector("#cards");
+    closeCard(cardBack, card);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// close card
+const closeCard = function (element1, element2) {
+  element1.addEventListener("click", () => {
+    element1.remove();
+    element2.remove();
+  });
+};
+
+// render main page
 const init = async function () {
   render(pokemon_count);
   spinner.classList.add("none");
   loadMoreBtn.addEventListener("click", () => {
     renderSpinner(updateTen);
   });
-  window.addEventListener("load", () => {
-    console.log("page is fully loaded");
+  let id;
+
+  // openCard();
+  poke_container.addEventListener("click", function (e) {
+    const clickCard = e.target.closest(".pokemon");
+    if (!clickCard) return;
+    id = clickCard.dataset["id"];
+    pokeCard(id);
   });
 };
 
