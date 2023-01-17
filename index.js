@@ -136,6 +136,7 @@ const pokeCard = async function (id) {
       return el.language.name === "en";
     }).flavor_text;
     text = text.includes("\f") ? text.replace("\f", " ") : text;
+    data.name = format(data.name);
     const html = createMarkUp(data, text);
     poke_container.insertAdjacentHTML("beforebegin", html);
 

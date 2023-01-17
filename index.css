@@ -28,7 +28,6 @@ h1 {
 .poke-container {
   display: flex;
   flex-wrap: wrap;
-  align-items: space-between;
   justify-content: center;
   margin: 0;
   max-width: 1200px;
@@ -49,9 +48,10 @@ h1 {
 
 /* pokemon card */
 .cards {
-  border-radius: 2rem;
+  border-radius: 0.2rem;
   height: 80%;
   width: 85%;
+  /* min-height: 600px; */
   padding: 2%;
   position: fixed;
   left: auto;
@@ -62,29 +62,39 @@ h1 {
   justify-content: space-around;
   overflow: hidden;
   background-color: rgba(176, 155, 140, 0.9);
+  min-width: 20rem;
 }
 
 .details {
-  border-radius: 1rem;
+  border-radius: 0.2rem;
   background-image: url("./images/other/card-back.jpg");
   width: 100%;
-  margin: 0.5rem auto;
+  margin: 0.2rem auto;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 .basic {
   flex-grow: 1.5;
+  padding: 0.2rem;
 }
 
+#detailImage {
+  width: 60%;
+  max-width: 256px;
+  min-width: 11rem;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
 .basic img {
   /* background-color: #d8756a; */
-  width: 12rem;
+  width: 100%;
 }
-.info-wrapper {
-  display: flex;
-  flex-direction: column;
-}
+
+/* .info-wrapper {
+  min-width:2rem ;
+} */
 
 .stats {
   flex-grow: 1.5;
@@ -96,7 +106,7 @@ h1 {
   white-space: nowrap;
 }
 .stats table td {
-  width: 70%;
+  width: 80%;
   height: 1.2rem;
 }
 .stats table td small {
@@ -133,14 +143,21 @@ h1 {
 .stat.spe td span {
   background-color: #a456d0;
 }
+
+.description {
+  padding: 0.2rem;
+}
+.description p {
+  margin-left: 0.6rem;
+}
+
 /* main page */
 
 .pokemon {
-  background-color: lightblue;
   border-radius: 10px;
   box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
   padding: 20px;
-  margin: 10px;
+  margin: 0.5rem;
   text-align: center;
   animation: bounceIn 1s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
@@ -207,6 +224,12 @@ h1 {
   line-height: 3rem;
   margin: 1rem;
   font-family: "Pokemon Solid", sans-serif;
+  text-align: center;
+}
+.loadMore p {
+  height: auto;
+  margin: 0;
+  margin-top: -1rem;
 }
 
 .spinner {
@@ -225,5 +248,26 @@ h1 {
 
   100% {
     transform: rotate(360deg);
+  }
+}
+
+.footer {
+  font-size: 0.1rem;
+  color: rgb(186, 175, 175);
+}
+
+@media (max-height: 768px) {
+  .cards {
+    height: 85%;
+  }
+}
+@media (max-width: 320px) {
+  .cards {
+    height: 75%;
+    min-width: 17rem;
+    font-size: 0.4rem;
+  }
+  .basic img {
+    width: 75%;
   }
 }
