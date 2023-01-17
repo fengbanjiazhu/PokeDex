@@ -15,7 +15,9 @@ body {
   margin: 0;
   background-image: url("./images/other/background.png");
   position: relative;
+  cursor: url("./images/other/pokeball.ico") 16 16, default;
 }
+
 .none {
   display: none;
 }
@@ -230,7 +232,7 @@ h1 {
 .loadMore p {
   height: auto;
   margin: 0;
-  margin-top: -0.5rem;
+  /* margin-top: -0.5rem; */
 }
 
 .spinner {
