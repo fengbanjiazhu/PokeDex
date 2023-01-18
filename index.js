@@ -1,5 +1,6 @@
 import { createMarkUp } from "./detail-card.js";
 const poke_container = document.getElementById("poke-container");
+const searchBar = document.querySelector(".search");
 
 const loadMoreBtn = document.querySelector(".loadMore");
 const spinner = document.querySelector(".spinner");
@@ -55,7 +56,7 @@ const format = function (str) {
 
 // poke card template
 const createPokeCard = function (data) {
-  const id = data.id < 1000 ? data.id.toString().padStart(3, "0") : data.id;
+  const id = data.id < 100 ? data.id.toString().padStart(3, "0") : data.id;
   const mainType = data.types[0].type.name;
 
   const name = format(data.name);
@@ -67,7 +68,8 @@ const createPokeCard = function (data) {
     <div class="pokemon" data-id=${data.id} style="background-color:${colors[mainType]}">
       <div class="img-container">
         <img
-          src="./images/pokemon/${data.id}.png"
+          
+          src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${id}.png"
           alt=""
         />
       </div>
@@ -84,9 +86,9 @@ const createPokeCard = function (data) {
 };
 
 // render main page
-const render = async function (number) {
+const render = async function (number, curNum = 1) {
   try {
-    const datas = await allPokeData(number);
+    const datas = await allPokeData(number, curNum);
     if (!datas) throw new Error("did not get data");
     let template = [];
     await datas.forEach((data) => {
@@ -102,18 +104,11 @@ const render = async function (number) {
 
 // update more datas
 let dexNum = pokemon_count + 1;
+
 const updateTen = async function () {
   try {
-    const datas = await allPokeData(dexNum + 20, dexNum);
-    if (!datas) throw new Error("did not get data");
+    await render(dexNum + 20, dexNum);
     dexNum += 21;
-    let template = [];
-    await datas.forEach((data) => {
-      template.push(createPokeCard(data));
-    });
-    const markup = template.join("");
-    // console.log(markup);
-    poke_container.insertAdjacentHTML("beforeend", markup);
   } catch (error) {
     console.log(error);
   }
@@ -134,12 +129,18 @@ const pokeCard = async function (id) {
     const species = await data2.json();
     let text = species.flavor_text_entries.find((el) => {
       return el.language.name === "en";
-    }).flavor_text;
-    text = text.includes("\f") ? text.replace("\f", " ") : text;
+    })?.flavor_text;
+    if (text) {
+      text = text.includes("\f") ? text.replace("\f", " ") : text;
+    } else {
+      text = "No descriptions yet";
+    }
+
     data.name = format(data.name);
     const html = createMarkUp(data, text);
     poke_container.insertAdjacentHTML("beforebegin", html);
 
+    // close card function
     const cardBack = document.querySelector("#card-pad");
     const card = document.querySelector("#cards");
     closeCard(cardBack, card);
@@ -165,12 +166,24 @@ const init = async function () {
   });
   let id;
 
-  // openCard();
+  // click openCard();
   poke_container.addEventListener("click", function (e) {
     const clickCard = e.target.closest(".pokemon");
     if (!clickCard) return;
     id = clickCard.dataset["id"];
     pokeCard(id);
+  });
+
+  searchBar.addEventListener("keydown", function (e) {
+    if (e.keyCode !== 13) return;
+    const id = +searchBar.value;
+    if (!id || typeof id !== "number") {
+      alert("please enter a number between 1-1008");
+      searchBar.value = "";
+    }
+    // console.log(id);
+    pokeCard(id);
+    searchBar.value = "";
   });
 };
 
