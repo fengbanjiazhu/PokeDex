@@ -177,7 +177,7 @@ const init = async function () {
   searchBar.addEventListener("keydown", function (e) {
     if (e.keyCode !== 13) return;
     const id = +searchBar.value;
-    if (!id || typeof id !== "number") {
+    if (!id || typeof id !== "number" || id > 1008 || id < 1) {
       alert("please enter a number between 1-1008");
       searchBar.value = "";
     }
