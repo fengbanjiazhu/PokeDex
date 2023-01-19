@@ -16,7 +16,7 @@ body {
   height: 100%;
   width: 100%;
   margin: 0;
-  background-image: url("./images/other/background.png");
+  background-image: url("./images/other/background.jpg");
   position: relative;
   cursor: url("./images/other/pokeball.ico") 16 16, default;
   padding-top: 1rem;
