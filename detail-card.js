@@ -39,42 +39,42 @@ export const createMarkUp = function (data, text) {
           <th>Hp</th>
           <td>
             <small>${hp}</small>
-            <span style="width: calc(${hp} / 255 * 12rem)"> </span>
+            <span style="width: calc(${hp} / 255 * 80%)"> </span>
           </td>
         </tr>
         <tr class="stat atk">
           <th>Attack</th>
           <td>
             <small>${atk}</small>
-            <span style="width: calc(${atk} / 255 * 12rem)"></span>
+            <span style="width: calc(${atk} / 255 * 80%)"></span>
           </td>
         </tr>
         <tr class="stat def">
           <th>Defense</th>
           <td>
             <small>${def}</small>
-            <span style="width: calc(${def} / 255 * 12rem)"></span>
+            <span style="width: calc(${def} / 255 * 80%)"></span>
           </td>
         </tr>
         <tr class="stat spA">
           <th>sp-Atk</th>
           <td>
             <small>${spa}</small>
-            <span style="width: calc(${spa} / 255 * 12rem)"></span>
+            <span style="width: calc(${spa} / 255 * 80%)"></span>
           </td>
         </tr>
         <tr class="stat spD">
           <th>sp-Def</th>
           <td>
             <small>${spd}</small>
-            <span style="width: calc(${spd} / 255 * 12rem)"></span>
+            <span style="width: calc(${spd} / 255 * 80%)"></span>
           </td>
         </tr>
         <tr class="stat spe">
           <th>Speed</th>
           <td>
             <small>${spe}</small>
-            <span style="width: calc(${spe} / 255 * 12rem)"></span>
+            <span style="width: calc(${spe} / 255 * 80%)"></span>
           </td>
         </tr>
       </table>

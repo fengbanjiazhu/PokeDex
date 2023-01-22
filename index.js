@@ -1,7 +1,10 @@
 import { createMarkUp } from "./detail-card.js";
 const poke_container = document.getElementById("poke-container");
 const searchBar = document.querySelector(".search");
-
+// menu
+const menuBtn = document.querySelector(".menuBtn");
+const menuBar = document.querySelector(".menuBar");
+//
 const loadMoreBtn = document.querySelector(".loadMore");
 const spinner = document.querySelector(".spinner");
 const pokemon_count = 10;
@@ -157,6 +160,20 @@ const closeCard = function (element1, element2) {
   });
 };
 
+// open menu
+const menuFunc = function () {
+  menuBtn.addEventListener("click", function () {
+    if (menuBar.classList.length > 1) {
+      menuBar.classList.remove("none");
+      menuBtn.innerHTML = "Menu ▿";
+      console.log();
+    } else {
+      menuBar.classList.add("none");
+      menuBtn.innerHTML = "Menu ▹";
+    }
+  });
+};
+
 // render main page
 const init = async function () {
   render(pokemon_count);
@@ -174,6 +191,10 @@ const init = async function () {
     pokeCard(id);
   });
 
+  // listen menu button
+  menuFunc();
+
+  // listen search result
   searchBar.addEventListener("keydown", function (e) {
     if (e.keyCode !== 13) return;
     const id = +searchBar.value;
@@ -181,7 +202,6 @@ const init = async function () {
       alert("please enter a number between 1-1008");
       searchBar.value = "";
     }
-    // console.log(id);
     pokeCard(id);
     searchBar.value = "";
   });
