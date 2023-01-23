@@ -1,6 +1,7 @@
 import { createMarkUp } from "./detail-card.js";
 const poke_container = document.getElementById("poke-container");
 const searchBar = document.querySelector(".search");
+const header = document.querySelector(".header");
 // menu
 const menuBtn = document.querySelector(".menuBtn");
 const menuBar = document.querySelector(".menuBar");
@@ -124,6 +125,11 @@ const renderSpinner = async function (handler) {
   spinner.classList.add("none");
 };
 
+const cardBack = function () {
+  const html = `<div class="card-pad" id="card-pad"></div>`;
+  header.insertAdjacentHTML("afterend", html);
+};
+
 // listen details card
 const pokeCard = async function (id) {
   try {
@@ -147,6 +153,21 @@ const pokeCard = async function (id) {
     const cardBack = document.querySelector("#card-pad");
     const card = document.querySelector("#cards");
     closeCard(cardBack, card);
+
+    // change card func
+    const prev = document.querySelector(".prevCard");
+    const next = document.querySelector(".nextCard");
+
+    const changeCard = function (element, id) {
+      element.addEventListener("click", function (e) {
+        card.remove();
+        if (id < 1 || id > 1008) return;
+        pokeCard(id);
+      });
+    };
+    changeCard(prev, +id - 1);
+    changeCard(next, +id + 1);
+    //
   } catch (error) {
     console.log(error);
   }
@@ -188,6 +209,7 @@ const init = async function () {
     const clickCard = e.target.closest(".pokemon");
     if (!clickCard) return;
     id = clickCard.dataset["id"];
+    cardBack();
     pokeCard(id);
   });
 
@@ -202,6 +224,7 @@ const init = async function () {
       alert("please enter a number between 1-1008");
       searchBar.value = "";
     }
+    cardBack();
     pokeCard(id);
     searchBar.value = "";
   });

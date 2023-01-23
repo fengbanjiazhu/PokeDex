@@ -25,6 +25,7 @@ body {
 a {
   text-decoration: none;
   text-align: center;
+  background-color: #d8756a;
 }
 
 .none {
@@ -44,7 +45,6 @@ a {
 
 /* back to top button */
 .funcBtn {
-  background-color: #d8756a;
   position: absolute;
   font-size: 0.5rem;
   width: 3.5rem;
@@ -144,6 +144,7 @@ h1 {
   overflow: hidden;
   background-color: rgba(176, 155, 140, 0.9);
   min-width: 20rem;
+  animation: bounceIn 1s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
 .details {
@@ -159,7 +160,19 @@ h1 {
   flex-grow: 1.5;
   padding: 0.2rem;
 }
-
+/* card button */
+.cardBtns {
+  height: 1.5rem;
+}
+.cardBtns a {
+  line-height: 1.2rem;
+  width: 5rem;
+  color: white;
+  text-align: center;
+  border-radius: 0.2rem;
+  opacity: 0.8;
+}
+/* images */
 #detailImage {
   width: 60%;
   max-width: 256px;

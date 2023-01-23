@@ -9,9 +9,12 @@ export const createMarkUp = function (data, text) {
   // console.log(hidden);
 
   return `
-  <div class="card-pad" id="card-pad"></div>
-
   <div class="cards" id="cards" data-id="${data.id}">
+    <div class="details cardBtns">
+      <a class="prevCard cardBtn">Prev</a>
+      <a class="nextCard cardBtn">Next</a>
+    </div>
+
     <div class="details basic">
       <div class="image" id="detailImage"><img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/${id}.png" alt="" /></div>
       <div class="info-wrapper">
