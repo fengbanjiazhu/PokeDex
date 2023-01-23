@@ -159,9 +159,11 @@ const pokeCard = async function (id) {
     const next = document.querySelector(".nextCard");
 
     const changeCard = function (element, id) {
-      element.addEventListener("click", function (e) {
-        card.remove();
+      element.addEventListener("click", function () {
+        // id need to be valid to continue
         if (id < 1 || id > 1008) return;
+        // only re-render the card, not background
+        card.remove();
         pokeCard(id);
       });
     };
