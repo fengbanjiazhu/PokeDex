@@ -171,7 +171,7 @@ const pokeCard = async function (id) {
     changeCard(next, +id + 1);
     //
   } catch (error) {
-    console.log(error);
+    console.log("error");
   }
 };
 
@@ -225,6 +225,7 @@ const init = async function () {
     if (!id || typeof id !== "number" || id > 1008 || id < 1) {
       alert("please enter a number between 1-1008");
       searchBar.value = "";
+      return;
     }
     cardBack();
     pokeCard(id);
