@@ -136,7 +136,7 @@ h1 {
   padding: 2%;
   position: fixed;
   left: auto;
-  top: 10%;
+  top: 7%;
   z-index: 100;
   display: flex;
   flex-direction: column;
@@ -366,7 +366,7 @@ h1 {
 
 @media (max-height: 768px) {
   .cards {
-    height: 85%;
+    min-height: 86%;
   }
 }
 @media (max-width: 320px) {
